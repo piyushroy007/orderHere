@@ -1,0 +1,29 @@
+{
+  "name": "orderhere",
+  "version": "1.0.0",
+  "description": "This is a food ordering app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "parcel build index.html",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyushroy007/orderHere.git"
+  },
+  "author": "Piyush Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piyushroy007/orderHere/issues"
+  },
+  "homepage": "https://github.com/piyushroy007/orderHere#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
