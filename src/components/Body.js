@@ -2,6 +2,7 @@ import ResturantCard from "./RestaurantCard"
 import { useEffect, useState } from "react"
 import { SWIGGY_API } from "../utils/constants"
 import Shimmer from "./Shimmer"
+import { Link } from "react-router-dom"
 
 
 const searchBarStyle = {
@@ -19,8 +20,8 @@ const Body = () => {
   const fetchData =  async () => {
     const data = await fetch(SWIGGY_API);
     const jsonData = await data.json();
-    setResList(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
-    setfilteredResList(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+    setResList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setfilteredResList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     console.log(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
   }
 
@@ -60,6 +61,7 @@ const Body = () => {
               className="clear-btn"
               onClick={ () =>{
                 setfilteredResList(resList);
+                setSearchTxt("");
               }}
             >
               Clear
@@ -80,7 +82,9 @@ const Body = () => {
           <div className="resturant-container">
             {
               filteredResList.map((items)=>(
-                <ResturantCard key={items.info.id} resData={items.info} />
+                <Link to={"/restaurants/" + items.info.id} key={items.info.id}>
+                  <ResturantCard resData={items.info} />
+                </Link>
               ))
             }
           </div>
