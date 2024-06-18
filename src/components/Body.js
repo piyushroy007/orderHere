@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { SWIGGY_API } from "../utils/constants"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
-
+import useOnlineStatus from "../utils/useOnlineStatus"
 
 const searchBarStyle = {
     border: "1px solid black"
@@ -12,11 +12,15 @@ const Body = () => {
   const [resList, setResList] = useState([]);
   const [filteredResList, setfilteredResList] = useState([]);
   const [searchTxt, setSearchTxt] = useState("");
+  const isOnline = useOnlineStatus();
+
   console.log("body reslist: ",resList)
+
+  
   useEffect( ()=> {
     fetchData();
   }, []);
-
+ 
   const fetchData =  async () => {
     const data = await fetch(SWIGGY_API);
     const jsonData = await data.json();
@@ -24,6 +28,13 @@ const Body = () => {
     setfilteredResList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     console.log(jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
   }
+
+  if(!isOnline) {
+   console.log("You are offline body.js");
+   return(
+     <h1>Opps ! You are offline...</h1>
+   )
+ }
 
   if (resList.length === 0) {
     return (
