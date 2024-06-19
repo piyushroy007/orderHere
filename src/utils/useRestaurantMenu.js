@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { SWIGGY_MENU_API } from "./constants";
 
 const UseRestaurantMenu = (resId) => {
@@ -16,8 +16,8 @@ const UseRestaurantMenu = (resId) => {
         } catch (error) {
             console.error("Error fetching menu: ", error);
         }
-    }
+    };
     return resInfo;
-}
+};
 
 export default UseRestaurantMenu;
