@@ -44,53 +44,58 @@ const Body = () => {
 
   return (
       <div className="body">
-          <div className="search" style={searchBarStyle  }>
-            
-            <input 
-              type="text"
-              className="search-box"
-              value={searchTxt}
-              onChange={(e)=>{
-                console.log(e.target.value);
-                setSearchTxt(e.target.value);
+          <div className="flex" style={searchBarStyle  }>
+            <div className="px-4 py-2 ">
+              <input 
+                type="text"
+                className="border border-solid border-black m-2"
+                value={searchTxt}
+                onChange={(e)=>{
+                  console.log(e.target.value);
+                  setSearchTxt(e.target.value);
+                }}>
+              </input>
+
+              <button
+                className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+                onClick={()=>{
+                  console.log(searchTxt);
+                  console.log(resList[1].info.name.toLowerCase().includes(searchTxt.toLowerCase()));
+                  const filterData = resList.filter( 
+                    (item) => item.info.name.toLowerCase().includes(searchTxt.toLowerCase()))
+                  console.log("filterData",filterData)
+                  setfilteredResList(filterData);
+                }}
+              >
+                Search
+              </button>
+            </div>
+            <div className="px-4 py-2 flex items-center">  
+              <button 
+                className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+                onClick={ () =>{
+                  setfilteredResList(resList);
+                  setSearchTxt("");
+                }}
+              >
+                Clear
+              </button>
+
+              <button 
+                className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+                onClick={ () =>{
+                  const filteredList = resList.filter(
+                    (res)=> res.info.avgRating > 4.3
+                  );
+                  setfilteredResList(filteredList);
               }}>
-            </input>
+                Top Rated Restuarants
+              </button>
+            </div>
 
-            <button
-              className="search-btn"
-              onClick={()=>{
-                console.log(searchTxt);
-                console.log(resList[1].info.name.toLowerCase().includes(searchTxt.toLowerCase()));
-                const filterData = resList.filter( 
-                  (item) => item.info.name.toLowerCase().includes(searchTxt.toLowerCase()))
-                console.log("filterData",filterData)
-                setfilteredResList(filterData);
-              }}
-            >Search</button>
-
-            <button 
-              className="clear-btn"
-              onClick={ () =>{
-                setfilteredResList(resList);
-                setSearchTxt("");
-              }}
-            >
-              Clear
-            </button>
-
-            <button 
-              className="search-btn"
-              onClick={ () =>{
-                const filteredList = resList.filter(
-                  (res)=> res.info.avgRating > 4.3
-                );
-                setfilteredResList(filteredList);
-            }}>
-              Top Rated Restuarants
-            </button>
             
           </div>
-          <div className="resturant-container">
+          <div className="flex flex-wrap">
             {
               filteredResList.map((items)=>(
                 <Link to={"/restaurants/" + items.info.id} key={items.info.id}>

@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 
 .header{
     display: flex;
     justify-content: space-between;
@@ -74,4 +80,4 @@
 
 .clear-btn{
     margin: 5px;
-}
+} */
