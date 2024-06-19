@@ -1,4 +1,4 @@
-import ResturantCard from "./RestaurantCard"
+import ResturantCard, { withPromotedLabel } from "./RestaurantCard"
 import { useEffect, useState } from "react"
 import { SWIGGY_API } from "../utils/constants"
 import Shimmer from "./Shimmer"
@@ -13,6 +13,7 @@ const Body = () => {
   const [filteredResList, setfilteredResList] = useState([]);
   const [searchTxt, setSearchTxt] = useState("");
   const isOnline = useOnlineStatus();
+  const RestaurantCardPromoted = withPromotedLabel(ResturantCard);
 
   console.log("body reslist: ",resList)
 
@@ -98,8 +99,10 @@ const Body = () => {
           <div className="flex flex-wrap">
             {
               filteredResList.map((items)=>(
-                <Link to={"/restaurants/" + items.info.id} key={items.info.id}>
-                  <ResturantCard resData={items.info} />
+                <Link 
+                  to={"/restaurants/" + items.info.id} 
+                  key={items.info.id}>
+                  {items.info.isOpen ? <RestaurantCardPromoted resData={items.info}/> : <ResturantCard resData={items.info} />}
                 </Link>
               ))
             }
