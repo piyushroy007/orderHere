@@ -8,28 +8,34 @@ import About from "./components/About";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import loggedInUser from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./redux/appStore";
 
 const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
     const [userData, setUserData] = useState({});
+
     useEffect(() => {
         const data = {
             name: "Rahul",
         };
         setUserData(data);
     }, []);
+
     return (
-        <loggedInUser.Provider
-            value={{
-                name: userData.name,
-                setUserData,
-            }}>
-            <div className="app">
-                <Header />
-                <Outlet />
-            </div>
-        </loggedInUser.Provider>
+        <Provider store={appStore}>
+            <loggedInUser.Provider
+                value={{
+                    name: userData.name,
+                    setUserData,
+                }}>
+                <div className="app">
+                    <Header />
+                    <Outlet />
+                </div>
+            </loggedInUser.Provider>
+        </Provider>
     );
 };
 

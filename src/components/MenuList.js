@@ -1,7 +1,17 @@
+import { useDispatch } from "react-redux";
 import { LOGO_URL } from "../utils/constants";
+import { addToCart } from "../redux/cartSlice";
 
 const MenuList = (items) => {
     const menuList = items.data;
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        // dispatch action
+        dispatch(addToCart(item));
+    };
+
     return (
         <div className="">
             {menuList.map((item) => (
@@ -25,7 +35,9 @@ const MenuList = (items) => {
                     </div>
                     <div className="w-3/12 p-3 flex justify-center items-end">
                         <div className="absolute">
-                            <button className="p-1 bg-white shadow-lg text-green-400 rounded-lg w-20">
+                            <button
+                                onClick={() => handleAddItem(item)}
+                                className="p-1 bg-white shadow-lg text-green-400 rounded-lg w-20">
                                 {" "}
                                 Add +
                             </button>

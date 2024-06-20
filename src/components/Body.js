@@ -7,7 +7,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import loggedInUser from "../utils/UserContext";
 
 const searchBarStyle = {
-    border: "1px solid black",
+    color: "green",
 };
 const Body = () => {
     const [resList, setResList] = useState([]);
@@ -49,7 +49,9 @@ const Body = () => {
 
     return (
         <div className="body">
-            <div className="flex" style={searchBarStyle}>
+            <div
+                className="flex shadow-sm shadow-red-400 bg-slate-200"
+                style={searchBarStyle}>
                 <div className="px-4 py-2 ">
                     <input
                         type="text"
