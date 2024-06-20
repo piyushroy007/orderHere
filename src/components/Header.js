@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { HEADER_LOGO_URL } from "../utils/constants";
+import { useContext } from "react";
+import loggedInUser from "../utils/UserContext";
 
 const Header = () => {
+    const userDetails = useContext(loggedInUser);
     return (
         <div className="flex justify-between border-box border-b-2">
             <div className="logo-container">
@@ -19,6 +22,7 @@ const Header = () => {
                         <Link to="/contact"> Contact Us </Link>
                     </li>
                     <li className="px-4">Cart</li>
+                    <li>{userDetails.name}</li>
                 </ul>
             </div>
         </div>

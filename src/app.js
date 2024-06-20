@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,17 +7,31 @@ import About from "./components/About";
 // import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import loggedInUser from "./utils/UserContext";
 
-const Contact = lazy(() => import ("./components/Contact"));
+const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
+    const [userData, setUserData] = useState({});
+    useEffect(() => {
+        const data = {
+            name: "Rahul",
+        };
+        setUserData(data);
+    }, []);
     return (
-        <div className="app">
-            <Header />
-            <Outlet />
-        </div>
-    )
-}
+        <loggedInUser.Provider
+            value={{
+                name: userData.name,
+                setUserData,
+            }}>
+            <div className="app">
+                <Header />
+                <Outlet />
+            </div>
+        </loggedInUser.Provider>
+    );
+};
 
 const appRouter = createBrowserRouter([
     {
@@ -26,28 +40,28 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Body />
+                element: <Body />,
             },
             {
                 path: "/about",
-                element: <About/>
+                element: <About />,
             },
             {
                 path: "/contact",
-                element:(
+                element: (
                     <Suspense fallback={<h1>Loading....</h1>}>
                         <Contact />
                     </Suspense>
-                )
+                ),
             },
             {
                 path: "/restaurants/:resId",
-                element: <RestaurantMenu />
-            }
+                element: <RestaurantMenu />,
+            },
         ],
-        errorElement:<Error />
-    }
-])
+        errorElement: <Error />,
+    },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);

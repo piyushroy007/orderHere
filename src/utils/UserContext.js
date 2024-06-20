@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const loggedInUser = createContext({
     name: "Piyush",
-    location: "Kolkata",
+    location: "India",
 });
 
 export default loggedInUser;
