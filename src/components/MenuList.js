@@ -16,7 +16,7 @@ const MenuList = (items) => {
         <div className="">
             {menuList.map((item) => (
                 <div
-                    key={item?.card?.info?.name}
+                    key={item?.card?.info?.id}
                     className="p-2 m-2 border-gray-200 border-b-2 flex ">
                     <div className="text-left w-9/12">
                         <span className="font-bold">
