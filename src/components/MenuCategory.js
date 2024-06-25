@@ -48,10 +48,7 @@ const MenuCategory = ({ data, showItems, setShowIndex }) => {
                         </span>
                     )}
                 </div>
-                <div>
-                    {console.log(showItems)}
-                    {showItems && <MenuList data={data.itemCards} />}
-                </div>
+                <div>{showItems && <MenuList data={data.itemCards} />}</div>
             </div>
         </div>
     );

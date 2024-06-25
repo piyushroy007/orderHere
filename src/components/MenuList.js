@@ -13,9 +13,10 @@ const MenuList = (items) => {
     };
 
     return (
-        <div className="">
+        <div>
             {menuList.map((item) => (
                 <div
+                    data-testid="fooditems"
                     key={item?.card?.info?.id}
                     className="p-2 m-2 border-gray-200 border-b-2 flex ">
                     <div className="text-left w-9/12">

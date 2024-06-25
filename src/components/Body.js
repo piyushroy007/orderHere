@@ -17,7 +17,6 @@ const Body = () => {
     const RestaurantCardPromoted = withPromotedLabel(ResturantCard);
 
     const { name, setUserData } = useContext(loggedInUser);
-    console.log("body user: ", name);
 
     useEffect(() => {
         fetchData();
@@ -57,25 +56,17 @@ const Body = () => {
                         className="border border-solid border-black m-2"
                         value={searchTxt}
                         onChange={(e) => {
-                            console.log(e.target.value);
                             setSearchTxt(e.target.value);
                         }}></input>
 
                     <button
                         className="px-4 py-2 bg-green-100 m-4 rounded-lg"
                         onClick={() => {
-                            console.log(searchTxt);
-                            console.log(
-                                resList[1].info.name
-                                    .toLowerCase()
-                                    .includes(searchTxt.toLowerCase())
-                            );
                             const filterData = resList.filter((item) =>
                                 item.info.name
                                     .toLowerCase()
                                     .includes(searchTxt.toLowerCase())
                             );
-                            console.log("filterData", filterData);
                             setfilteredResList(filterData);
                         }}>
                         Search
