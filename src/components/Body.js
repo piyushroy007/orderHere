@@ -16,8 +16,6 @@ const Body = () => {
     const isOnline = useOnlineStatus();
     const RestaurantCardPromoted = withPromotedLabel(ResturantCard);
 
-    console.log("body reslist: ", resList);
-
     const { name, setUserData } = useContext(loggedInUser);
     console.log("body user: ", name);
 
@@ -43,7 +41,7 @@ const Body = () => {
         return <h1>Opps ! You are offline...</h1>;
     }
 
-    if (resList.length === 0) {
+    if (resList && resList.length === 0) {
         return <Shimmer />;
     }
 
@@ -55,6 +53,7 @@ const Body = () => {
                 <div className="px-4 py-2 ">
                     <input
                         type="text"
+                        data-testid="searchInput"
                         className="border border-solid border-black m-2"
                         value={searchTxt}
                         onChange={(e) => {
@@ -117,17 +116,18 @@ const Body = () => {
                 </div>
             </div>
             <div className="flex flex-wrap">
-                {filteredResList.map((items) => (
-                    <Link
-                        to={"/restaurants/" + items.info.id}
-                        key={items.info.id}>
-                        {items.info.isOpen ? (
-                            <RestaurantCardPromoted resData={items.info} />
-                        ) : (
-                            <ResturantCard resData={items.info} />
-                        )}
-                    </Link>
-                ))}
+                {filteredResList &&
+                    filteredResList.map((items) => (
+                        <Link
+                            to={"/restaurants/" + items.info.id}
+                            key={items.info.id}>
+                            {items.info.isOpen ? (
+                                <RestaurantCardPromoted resData={items.info} />
+                            ) : (
+                                <ResturantCard resData={items.info} />
+                            )}
+                        </Link>
+                    ))}
             </div>
         </div>
     );

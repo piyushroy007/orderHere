@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
 import { HEADER_LOGO_URL } from "../utils/constants";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import loggedInUser from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
     const userDetails = useContext(loggedInUser);
+    const [textLogin, setTextLogin] = useState("Login");
+
+    function handleLogin() {
+        if (textLogin === "Login") {
+            // redirect to login page
+            setTextLogin("Logout");
+        } else {
+            // redirect to home page
+            setTextLogin("Login");
+        }
+    }
 
     // subscribe to the store using a selector
     const cartItems = useSelector((store) => store.cart.items);
-    console.log(cartItems);
     return (
         <div className="flex justify-between shadow-sm shadow-red-300">
             <div className="logo-container">
@@ -46,7 +56,14 @@ const Header = () => {
                             <span className="pb-1">({cartItems.length})</span>
                         </div>
                     </li>
-                    <li>{userDetails.name}</li>
+                    <li className="px-4">{userDetails.name}</li>
+                    <li className="px-4">
+                        <button
+                            className="rounded-lg bg-black text-white p-2"
+                            onClick={handleLogin}>
+                            {textLogin}
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
