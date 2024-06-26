@@ -45,9 +45,9 @@ const Body = () => {
     }
 
     return (
-        <div className="body">
+        <div className="flex flex-col">
             <div
-                className="flex shadow-sm shadow-red-400 bg-slate-200"
+                className="flex flex-row justify-evenly shadow-sm shadow-red-400 bg-slate-200"
                 style={searchBarStyle}>
                 <div className="px-4 py-2 ">
                     <input
@@ -106,7 +106,7 @@ const Body = () => {
                         }}></input>
                 </div>
             </div>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap justify-evenly justify-items-center">
                 {filteredResList &&
                     filteredResList.map((items) => (
                         <Link

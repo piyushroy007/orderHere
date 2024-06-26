@@ -11,6 +11,7 @@ import loggedInUser from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./redux/appStore";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 const Contact = lazy(() => import("./components/Contact"));
 
@@ -34,6 +35,7 @@ const AppLayout = () => {
                 <div className="app">
                     <Header />
                     <Outlet />
+                    <Footer />
                 </div>
             </loggedInUser.Provider>
         </Provider>
