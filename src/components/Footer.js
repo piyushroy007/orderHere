@@ -19,12 +19,14 @@ function Footer() {
                         <p className="text-gray-400 pb-2">About</p>
                         <p className="text-gray-400 pb-2">Careers</p>
                         <p className="text-gray-400 pb-2">Team</p>
+                        <p className="text-lg pb-2">Legal </p>
+                        <p className="text-gray-400 pb-2">Terms & Conditions</p>
+                    </div>
+                    <div className="third">
                         <p className="text-lg pb-2">Contact Us</p>
                         <p className="text-gray-400 pb-2">Help & Support </p>
                         <p className="text-gray-400 pb-2">Partner with us</p>
                         <p className="text-gray-400 pb-2">Ride with us </p>
-                        <p className="text-lg pb-2">Legal </p>
-                        <p className="text-gray-400 pb-2">Terms & Conditions</p>
                     </div>
                     <div className="forth">
                         <p className="text-lg pb-2">We Deliver to:</p>

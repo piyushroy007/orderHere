@@ -15,7 +15,7 @@ const Cart = () => {
 
     return (
         <div className="m-auto w-6/12 text-center">
-            <div className="m-3 p-2 font-bold text-xl bg-green-300 shadow-md shadow-orange-400 flex justify-between ">
+            <div className="mb-3 mt-3 p-2 font-bold text-xl bg-green-300 shadow-md shadow-orange-400 flex justify-between ">
                 <span>Cart</span>
                 <button
                     className="bg-black text-white rounded-md p-1"
@@ -29,6 +29,13 @@ const Cart = () => {
             <div className="bg-slate-300">
                 <MenuList data={cartItems} />
             </div>
+
+            {cartItems.length > 0 && (
+                <div className="mb-3 p-2 font-bold text-xl text-white bg-black shadow-md shadow-orange-400 flex justify-between ">
+                    <span>Total Cart Value :</span>
+                    <span>₹ 1500</span>
+                </div>
+            )}
         </div>
     );
 };

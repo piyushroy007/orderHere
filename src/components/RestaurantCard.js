@@ -7,14 +7,20 @@ const ResturantCard = (props) => {
     return (
         <div
             data-testid="resCard"
-            className="m-4 p-4 w-64 rounded-lg h-100 bg-gray-200">
+            className="m-4 p-4 w-64 h-400px rounded-lg h-100 bg-gray-200">
             <img
-                className="w-56"
+                className="w-56 h-64"
                 alt={name}
                 src={LOGO_URL + cloudinaryImageId}></img>
-            <p>{name}</p>
+            <p className="truncate" title={name}>
+                {name}
+            </p>
             <p>{costForTwo}</p>
-            <p className="cuisines">{cuisines && cuisines.join(", ")}</p>
+            <p
+                className="cuisines truncate"
+                title={cuisines && cuisines.join(", ")}>
+                {cuisines && cuisines.join(", ")}
+            </p>
             <p>ETA : {sla?.deliveryTime} mins</p>
             <p>{"Ratings :" + avgRating}</p>
         </div>

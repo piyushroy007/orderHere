@@ -47,13 +47,13 @@ const Body = () => {
     return (
         <div className="flex flex-col">
             <div
-                className="flex flex-row justify-evenly shadow-sm shadow-red-400 bg-slate-200"
+                className="flex flex-row justify-between shadow-sm shadow-red-400 bg-slate-200"
                 style={searchBarStyle}>
                 <div className="px-4 py-2 ">
                     <input
                         type="text"
                         data-testid="searchInput"
-                        className="border border-solid border-black m-2"
+                        className="border border-solid border-black p-1 rounded-lg"
                         value={searchTxt}
                         onChange={(e) => {
                             setSearchTxt(e.target.value);
@@ -93,7 +93,7 @@ const Body = () => {
                         Top Rated Restuarants
                     </button>
                 </div>
-                <div className=" flex items-center">
+                {/* <div className=" flex items-center">
                     <label className="">User Name : </label>
                     <input
                         type="text"
@@ -104,7 +104,7 @@ const Body = () => {
                                 name: e.target.value,
                             });
                         }}></input>
-                </div>
+                </div> */}
             </div>
             <div className="flex flex-wrap justify-evenly justify-items-center">
                 {filteredResList &&

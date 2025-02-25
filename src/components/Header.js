@@ -56,10 +56,10 @@ const Header = () => {
                             <span className="pb-1">({cartItems.length})</span>
                         </div>
                     </li>
-                    <li className="px-4">{userDetails.name}</li>
+                    {/* <li className="px-4">{userDetails.name}</li> */}
                     <li className="px-4">
                         <button
-                            className="rounded-lg bg-black text-white p-2"
+                            className="rounded-lg bg-slate-600 text-white w-20 h-7"
                             onClick={handleLogin}>
                             {textLogin}
                         </button>
